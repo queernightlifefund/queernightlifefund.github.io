@@ -1,6 +1,5 @@
-baseURL = "https://nonlinear.github.io/"
+baseURL = "https://queernightlifefund.github.io/"
 languageCode = "en-us"
-title = "Nicholas Frota"
-role = "Senior UI Designer"
+title = "Queer Nightlife Fund"
 publishDir = "docs"
 theme = "play"
