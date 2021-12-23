@@ -1,0 +1,403 @@
+@include font-face(Space Grotesk, 
+	$path: "../fonts/", 
+	$file: SpaceGrotesk-Light, 
+	$weight: normal, 
+	$style: normal, 
+	$stretch: normal, 
+	$transform: normal
+	);
+
+@include font-face(Space Grotesk, 
+	$path: "../fonts/", 
+	$file: SpaceGrotesk-Regular, 
+	$weight: bold, 
+	$style: normal, 
+	$stretch: normal, 
+	$transform: normal
+	);
+
+.container {
+	width: 100%;
+	max-width: $container;
+	padding: $gap3 $gap;
+	padding-top: 0;
+
+}
+
+.cover .container {
+	max-width: 350px;
+}
+
+.ascii {
+	font-family: monospace;
+	line-height: 120%;
+	font-size:50%;
+	color: $color-fg;
+	margin-top: $gap3;
+}
+
+.exercises {
+	table {
+		width: 100%;
+		margin-bottom: $gap2;
+		tr {
+			border-bottom: solid 1px  #aaa;
+		}
+		td {
+			padding: 10px;
+			vertical-align: top;
+			&:first-of-type {
+				padding-left: 0;
+			}
+			&:last-of-type {
+				padding-right: 0;
+			}
+		}
+	}
+	td img {
+		max-width: 100%;
+	}
+}
+
+
+
+body {
+	font-family: Space Grotesk;
+	background-color: $color-bg;
+	color: $color-fg;
+	padding: 0;
+	margin: 0;
+	@include transition;
+	font-size: 110%;
+}
+
+
+
+
+
+
+hr {
+	margin: $gap2 0;
+	border-color: #aaa;
+}
+
+
+h1, h2, h3, h4, h5 {
+	font-weight: bold;
+}
+h1, h2, h3, h4, h5, p {
+	margin-bottom: $gap;
+}
+
+
+
+
+
+
+
+
+
+
+a {
+	color: $color-fg;
+	background-color: $link;
+	@include transition;
+	&:hover {
+		color: black;
+		text-decoration: none;
+		background-color: $hover;
+	}
+	.links & {
+		display: block;
+		padding: $gap 0;
+		border-top: solid 1px $color-fg;
+		&:last-of-type {
+
+			border-bottom: solid 1px $color-fg;
+		}
+
+		@include radius(0);
+		background-color: $color-bg;
+		text-align: left;
+		font-weight: bold;
+		color: $color-fg;
+		span {
+			font-weight: normal;
+			display: block;
+			font-size: 90%;
+		}
+		&:hover {
+			background-color: transparent !important;
+			@include translate(20, 0);
+			background-color: $link;
+			&:before {
+				@include opacity(100);
+			}
+
+
+		}
+	}
+}
+
+
+
+$menu: 250px;
+$peek: 30px;
+
+.menu { 
+	width: $menu;
+	padding-right: $peek;
+	height: 98vh;
+	@include transition;
+	position: absolute;
+	top: 0;
+	body.article & {
+		@include fadeInLeft($duration: 1s, $delay: 300ms);
+		.scroll {
+			@include shadow(box, 3px 0 0px rgba(0, 0, 0, 0.07));
+		}
+	}
+	body:not(.article) & {
+		left: ($menu - $peek) * -1;
+		@include opacity(30);
+		&:hover, &:focus, &:focus-within {
+			left: 0;
+			@include opacity(100);
+			.scroll {
+				@include shadow(box, 3px 0 0px rgba(0, 0, 0, 0.07));
+			}
+		}
+		&:after {
+			content:"ⓘ";
+			margin-top: -$peek;
+			margin-right: -$peek;
+			font-size: 20px;
+			padding: 5px;
+			width: $peek;
+			height: $peek;
+			float: right;
+			display: inline-block;
+		}
+	}
+
+	box-sizing: border-box;
+
+	margin: 1vh 0;
+	header {
+		margin-bottom: 20px;
+		p {
+			margin-bottom: 0;
+			font-size: 80%;
+		}
+
+	}
+	.title {
+		margin: 0;
+		padding:0;
+	}
+	
+	
+	.scroll {
+		overflow: auto;
+		padding: 20px;
+		background-color: white;
+		@include radius(0, 10px, 10px, 0, irregular);
+		box-sizing: border-box;
+		height: 98vh;
+
+	}
+}
+
+
+
+.categories {
+	display: grid;
+	grid-gap: $gap2;
+	grid-template-columns: repeat(4, 1fr);
+	.category {
+		ul, ol {
+			padding-left: $gap;
+		}
+	}
+}
+
+
+
+header.header {
+	padding-top:  $gap2;
+	margin-bottom:  $gap2;
+	background-color: $color-bg;
+	hr {
+		margin-bottom: 0;
+	}
+	h1, h2, h3 {
+		margin-bottom: 0;
+	}
+	nav {
+
+		h2 {
+			font-size: 120%;
+		}
+	}
+	.date {
+		color: #666;
+		font-size: 120%;
+	}
+
+}
+
+
+
+.style-bg-slideshow,
+.style-bg-video {
+
+	.container {
+		margin-top: 60px;
+		color: black;
+		a {
+			color: black;
+		}
+		padding: 40px;
+		width: 450px;
+		background-color: rgba(white, .6);
+
+	}
+}
+
+
+.style-bg-video {
+
+	.container {
+		color: white;
+		a {
+			color: white;
+		}
+		background-color: rgba(black, .6);
+
+	}
+}
+
+.reveal {
+	@include find(red);
+	height: 100vh;
+	width: 100vw;
+	top: 0;
+	left: 0;
+}
+
+
+.bubble {
+	padding: $gap2;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	--center-card-width: 500px;
+	--center-card-height: 600px;
+	padding-top: $gap10 + $gap5;
+	@extend .center-card;
+	.style-mockup-1 & {
+		--mockup-image: url(/images/mockups/sleeve-with-reflection.png);
+	}
+	.style-mockup-2 & {
+		--mockup-image: url(/images/mockups/film-sheet-7.png);
+		&:before {
+			@include opacity(60);
+		}
+	}
+	.style-mockup-3 & {
+		--mockup-image: url(/images/mockups/crinkled-pouch-open-top.png);
+		&:before {
+			@include opacity(60);
+		}
+	}
+	.style-mockup-4 & {
+		--mockup-image: url(/images/mockups/corner-2.png);
+	}
+	@extend .mockup;
+
+
+}
+
+.style-grainy {
+
+	.center-card {
+
+		--center-card-width: 400px;
+		--center-card-height: 600px;
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		grid-gap: 1px;
+		div {
+			$first-color: red;
+			$second-color: white;
+			&:after {
+				content: "xxx";
+				color: black;
+				padding: 5px;
+				display: block;
+			}
+			&:nth-of-type(1) {
+			
+				
+					background:  linear-gradient(30deg, $first-color 30%, rgba($first-color,0)80%),
+					url(/images/svg-filters/grainy-01.svg), 
+					$second-color;
+					&:after {
+						content: "grainy filter";
+					}
+				
+			}
+			&:nth-of-type(2) {
+			
+					background:  radial-gradient($first-color 10%, rgba($first-color,0) 80%),
+					url(/images/svg-filters/grainy-01.svg), 
+					$second-color;
+					&:after {
+						content: "grainy filter, radial";
+					}
+				
+			}
+			&:nth-of-type(3) {
+			
+					filter: contrast(170%) brightness(300%);
+					background:  radial-gradient($first-color, rgba($first-color,0)),
+					url(/images/svg-filters/moon.svg), 
+					$second-color;
+					&:after {
+						content: "moon filter";
+					}
+				
+			}
+			&:nth-of-type(4) {
+			
+					filter: contrast(170%) brightness(300%);
+					background:  radial-gradient($first-color, rgba($first-color,0)),
+					url(/images/svg-filters/watery.svg), 
+					$second-color;
+					&:after {
+						content: "watery filter";
+					}
+				
+			}
+			&:nth-of-type(5) {
+			
+					background:  radial-gradient($first-color, rgba($first-color,0)),
+					url(/images/svg-filters/grainy-01.svg), 
+					$second-color;
+					&:after {
+						content: "label";
+					}
+				
+			}
+			&:nth-of-type(6) {
+			
+					background:  radial-gradient($first-color, rgba($first-color,0)),
+					url(/images/svg-filters/grainy-01.svg), 
+					$second-color;
+					&:after {
+						content: "label";
+					}
+				
+			}
+		}
+	}
+}
